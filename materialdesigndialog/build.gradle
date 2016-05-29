@@ -23,3 +23,31 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
 }
+
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'material-design-dialog'
+
+    publishedGroupId = 'ca.vickypatel.materialdesigndialog'
+    libraryName = 'materialdesigndialog'
+    artifact = 'materialdesigndialog'
+
+    libraryDescription = 'Custom material design dialog '
+
+    siteUrl = 'https://github.com/VickyPatel/MaterialDesignDialog'
+    gitUrl = 'https://github.com/VickyPatel/MaterialDesignDialog.git'
+
+    libraryVersion = '1.0.2'
+
+    developerId = 'vickypatel'
+    developerName = 'Vicky Patel'
+    developerEmail = 'vicky.7676@yahoo.in'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

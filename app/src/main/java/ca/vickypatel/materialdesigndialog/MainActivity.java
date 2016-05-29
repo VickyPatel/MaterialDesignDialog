@@ -31,21 +31,20 @@ public class MainActivity extends AppCompatActivity {
                 String negativeActionText = "NO";
 
                 /** simple custom dialog */
-                new MaterialDesignDialog(MainActivity.this).initializeSimpleDialog(
-                        title, content, positiveActionText, negativeActionText,
-                        new MaterialDesignDialog.OnPositiveActionListener() {
-                            @Override
-                            public void onPositiveAction() {
-                                System.out.println("OK Button clicked");
-                                Snackbar.make(view, "OK Button clicked", Snackbar.LENGTH_LONG).show();
-                            }
-                        },
-                        new MaterialDesignDialog.OnNegativeActionListener() {
-                            @Override
-                            public void onNegativeAction() {
-                                Snackbar.make(view, "Cancel Button clicked", Snackbar.LENGTH_LONG).show();
-                            }
-                        });
+                new MaterialDesignDialog(MainActivity.this)
+                        .initializeSimpleDialog(
+                                title, content, positiveActionText, negativeActionText,
+                                new MaterialDesignDialog.OnActionListener() {
+                                    @Override
+                                    public void onPositiveAction() {
+                                        Snackbar.make(view, "OK Button clicked", Snackbar.LENGTH_LONG).show();
+                                    }
+
+                                    @Override
+                                    public void onNegativeAction() {
+                                        Snackbar.make(view, "Cancel Button clicked", Snackbar.LENGTH_LONG).show();
+                                    }
+                                });
             }
         });
     }

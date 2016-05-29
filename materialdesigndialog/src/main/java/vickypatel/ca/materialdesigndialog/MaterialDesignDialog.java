@@ -17,10 +17,8 @@ public class MaterialDesignDialog {
 
     public Context context;
 
-    public interface OnPositiveActionListener {
+    public interface OnActionListener {
         public void onPositiveAction();
-    }
-    public interface OnNegativeActionListener {
         public void onNegativeAction();
     }
 
@@ -30,8 +28,7 @@ public class MaterialDesignDialog {
 
     public void initializeSimpleDialog(
             String dialogTitle, String dialogContent, String positiveActionText, String negativeActionText,
-            final OnPositiveActionListener onPositiveActionListener,
-            final OnNegativeActionListener onNegativeActionListener) {
+            final OnActionListener onActionListener) {
 
         //Custom dialog
         final Dialog dialog = new Dialog(context);
@@ -60,7 +57,7 @@ public class MaterialDesignDialog {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                onPositiveActionListener.onPositiveAction();
+                onActionListener.onPositiveAction();
             }
         });
 
@@ -71,7 +68,7 @@ public class MaterialDesignDialog {
             public void onClick(View v) {
                 // Close the dialog
                 dialog.dismiss();
-                onNegativeActionListener.onNegativeAction();
+                onActionListener.onNegativeAction();
             }
         });
 
