@@ -1,5 +1,6 @@
 package ca.vickypatel.materialdesigndialog;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import vickypatel.ca.materialdesigndialog.MaterialDesignDialog;
 
@@ -31,20 +33,25 @@ public class MainActivity extends AppCompatActivity {
                 String negativeActionText = "NO";
 
                 /** simple custom dialog */
-                new MaterialDesignDialog(MainActivity.this)
-                        .initializeSimpleDialog(
-                                title, content, positiveActionText, negativeActionText,
-                                new MaterialDesignDialog.OnActionListener() {
-                                    @Override
-                                    public void onPositiveAction() {
-                                        Snackbar.make(view, "OK Button clicked", Snackbar.LENGTH_LONG).show();
-                                    }
+                new MaterialDesignDialog.Builder(MainActivity.this)
+                        .title(title)
+                        .content(content)
+                        .positiveActionText(positiveActionText)
+                        .negativeActionText(negativeActionText)
+                        .onPositiveAction(new MaterialDesignDialog.OnActionListener() {
+                            @Override
+                            public void onClick() {
+                                Toast.makeText(MainActivity.this, "OK clicked", Toast.LENGTH_LONG).show();
+                            }
+                        })
+                        .onNegativeAction(new MaterialDesignDialog.OnActionListener() {
+                            @Override
+                            public void onClick() {
+                                Toast.makeText(MainActivity.this, "CANCEL clicked", Toast.LENGTH_LONG).show();
+                            }
+                        })
+                        .show();
 
-                                    @Override
-                                    public void onNegativeAction() {
-                                        Snackbar.make(view, "Cancel Button clicked", Snackbar.LENGTH_LONG).show();
-                                    }
-                                });
             }
         });
     }
